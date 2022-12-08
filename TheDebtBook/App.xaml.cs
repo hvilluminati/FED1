@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace assignment1
+namespace TheDebtBook
 {
     /// <summary>
     /// Interaction logic for App.xaml

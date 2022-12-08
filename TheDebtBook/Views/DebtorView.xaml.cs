@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TheDebtBook.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +11,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace assignment1
+namespace TheDebtBook.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DebtorView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DebtorView : Window
     {
-        public MainWindow()
+        public DebtorView()
         {
             InitializeComponent();
+        }
+
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as DebtorViewModel;
+            if (vm.IsValid)
+                DialogResult = true;
         }
     }
 }
