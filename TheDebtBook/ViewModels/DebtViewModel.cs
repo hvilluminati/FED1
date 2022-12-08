@@ -3,6 +3,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System;
 
 namespace TheDebtBook.ViewModels
 {
@@ -35,6 +36,32 @@ namespace TheDebtBook.ViewModels
                 SetProperty(ref currentDebtor, value);
             }
         }
+
+
+        private int debtbox;
+
+        public int Debtbox
+        {
+            get { return this.debtbox; }
+            set
+            {
+                int temp = Convert.ToInt32(value);
+                SetProperty(ref debtbox, temp);
+            }
+
+        }
+
+
+        private DelegateCommand clickCommand;
+        public DelegateCommand ClickCommand => clickCommand ?? (clickCommand = new DelegateCommand(ExecuteClickCommand));
+        void ExecuteClickCommand()
+        {
+            currentDebtor.DebtList.Add(debtbox);
+            Debtbox = 0;
+            RaisePropertyChanged("CurrentDeptor");
+
+        }
+
 
         //bool isValid;
 
@@ -71,6 +98,7 @@ namespace TheDebtBook.ViewModels
 
         private void OkBtnCommand_Execute()
         {
+
             // No action here - is handled i code behind
         }
 

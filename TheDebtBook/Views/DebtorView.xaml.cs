@@ -27,9 +27,10 @@ namespace TheDebtBook.Views
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            var vm = DataContext as DebtorViewModel;
-            if (vm.IsValid)
-                DialogResult = true;
+            //var vm = DataContext as DebtorViewModel;
+            //if (vm.IsValid)
+            //    DialogResult = true;
+            DialogResult = true;
         }
     }
 }

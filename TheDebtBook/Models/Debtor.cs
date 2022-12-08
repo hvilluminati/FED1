@@ -1,4 +1,5 @@
 ﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,9 +7,9 @@ namespace TheDebtBook.Models
 {
     public class Debtor : BindableBase
     {
-        string name;
-        int debt;
-        List<int> debits;
+        private string name;
+        private int debt;
+        private List<int> debits = new List<int>();
 
         public Debtor()
         {
@@ -17,10 +18,27 @@ namespace TheDebtBook.Models
         public Debtor(string dName, int dDebt)
         {
             name = dName;
-            debt = dDebt;
-            debits = new List<int>();
-            debits.Add(debt);
+            //Debt = dDebt;
+            debits.Add(dDebt);
+        }
 
+        public int Debt
+        {
+            get
+            {
+                int totalDebt = 0;
+                foreach (int d in DebtList)
+                {
+                    totalDebt += d;
+                };
+
+                return totalDebt;
+            }
+            set
+            {
+                //debits.Add(value);
+                SetProperty(ref debt, Debt);
+            }
         }
 
         /// <summary>
@@ -44,19 +62,12 @@ namespace TheDebtBook.Models
             }
         }
 
-        public int Debt
-        {
-            get
-            {
-                return debt;
-            }
-            set
-            {
-                debits.Add(value);
-                int sum = debits.Sum();
-                SetProperty(ref debt, sum);
 
-            }
+        public List<int> DebtList
+        {
+            get { return debits; }
+
+            set { debits = value; }
         }
     }
 }

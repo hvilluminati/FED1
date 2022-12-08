@@ -40,7 +40,7 @@
                     Command="{Binding AddCommand}"
                     />
         </Menu>
-        <DataGrid ItemsSource="{Binding Path=Debtors}" 
+        <DataGrid     ItemsSource="{Binding Path=Debtors}" 
                       SelectedItem="{Binding Path=CurrentDebtor}"
                       SelectedIndex="{Binding Path=CurrentIndex}"
                       IsSynchronizedWithCurrentItem="True"

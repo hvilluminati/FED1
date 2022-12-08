@@ -18,26 +18,27 @@ namespace TheDebtBook.ViewModels
     {
         private readonly string AppTitle = "The Debt Book";
         private string filePath = "";
+        ObservableCollection<Debtor> debtors = new ObservableCollection<Debtor>();
 
         public MainWindowViewModel()
         {
-            Debtors = new ObservableCollection<Debtor>();
-            Debtors.Add(new Debtor("John", 100));
-            Debtors.Add(new Debtor("Jane", -200));
-            CurrentDebtor = Debtors[0];
+            
+            debtors.Add(new Debtor("John", 100));
+            debtors.Add(new Debtor("Jane", -200));
+            CurrentDebtor = debtors[0];
 
         }
 
         #region Properties
 
-        private Debtor currentDebtor;
-        public Debtor CurrentDebtor
+        Debtor? currentDebtor = null;
+
+        public Debtor? CurrentDebtor
         {
             get { return currentDebtor; }
             set { SetProperty(ref currentDebtor, value); }
         }
 
-        private ObservableCollection<Debtor> debtors;
         public ObservableCollection<Debtor> Debtors
         {
             get { return debtors; }
@@ -50,6 +51,7 @@ namespace TheDebtBook.ViewModels
             get { return currentIndex; }
             set { SetProperty(ref currentIndex, value); }
         }
+
 
         private string filename = "";
         public string Filename

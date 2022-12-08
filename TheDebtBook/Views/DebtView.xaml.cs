@@ -31,5 +31,6 @@ namespace TheDebtBook.Views
             if (vm.IsValid)
                 DialogResult = true;
         }
+
     }
 }
